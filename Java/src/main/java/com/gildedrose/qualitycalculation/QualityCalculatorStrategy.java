@@ -9,20 +9,20 @@ public abstract class QualityCalculatorStrategy {
 
     abstract void updateQuality(Item item);
 
-    public void increaseQuality(Item item, int amount) {
+    public void increaseQuality(Item item) {
         if (item.quality < MAX_QUALITY) {
-            item.quality = item.quality + amount;
+            item.quality++;
         }
     }
 
-    public void decreaseQuality(Item item, int amount) {
+    public void decreaseQuality(Item item) {
         if (item.quality > MIN_QUALITY) {
-            item.quality = item.quality - amount;
+            item.quality--;
         }
     }
 
     public void decreaseSellIn(Item item) {
-        item.sellIn = item.sellIn - 1;
+        item.sellIn--;
     }
 
 }

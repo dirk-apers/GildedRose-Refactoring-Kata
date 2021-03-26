@@ -6,14 +6,14 @@ public class BackstagePassesQualityCalculator extends QualityCalculatorStrategy 
 
     @Override
     public void updateQuality(Item item) {
-        increaseQuality(item, 1);
+        increaseQuality(item);
 
         if (item.sellIn < 11) {
-            increaseQuality(item, 1);
+            increaseQuality(item);
         }
 
         if (item.sellIn < 6) {
-            increaseQuality(item, 1);
+            increaseQuality(item);
         }
 
         decreaseSellIn(item);
