@@ -2,7 +2,7 @@ package com.gildedrose.qualitycalculation;
 
 import com.gildedrose.Item;
 
-public class ConjuredItemsQualityCalculator implements QualityCalculatorStrategy {
+public class ConjuredItemsQualityCalculator extends QualityCalculatorStrategy {
 
     @Override
     public void updateQuality(Item item) {

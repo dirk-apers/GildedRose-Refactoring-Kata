@@ -2,30 +2,24 @@ package com.gildedrose.qualitycalculation;
 
 import com.gildedrose.Item;
 
-public class BackstagePassesQualityCalculator implements QualityCalculatorStrategy {
+public class BackstagePassesQualityCalculator extends QualityCalculatorStrategy {
 
     @Override
     public void updateQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
+        increaseQuality(item, 1);
 
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
+        if (item.sellIn < 11) {
+            increaseQuality(item, 1);
         }
 
-        item.sellIn = item.sellIn - 1;
+        if (item.sellIn < 6) {
+            increaseQuality(item, 1);
+        }
+
+        decreaseSellIn(item);
 
         if (item.sellIn < 0) {
-            item.quality = item.quality - item.quality;
+            item.quality = MIN_QUALITY;
         }
     }
 }

@@ -2,20 +2,16 @@ package com.gildedrose.qualitycalculation;
 
 import com.gildedrose.Item;
 
-public class AgedBrieQualityCalculator implements QualityCalculatorStrategy {
+public class AgedBrieQualityCalculator extends QualityCalculatorStrategy {
 
     @Override
     public void updateQuality(Item item) {
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
+        increaseQuality(item, 1);
 
-        item.sellIn = item.sellIn - 1;
+        decreaseSellIn(item);
 
         if (item.sellIn < 0) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-            }
+            increaseQuality(item, 1);
         }
     }
 }
